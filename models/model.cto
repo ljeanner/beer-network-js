@@ -1,0 +1,107 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.acme.beer
+
+/* status d'une cargaison*/
+
+enum StatutCargaison {
+  o CREE
+  o EN_TRANSIT
+  o ARRIVE	
+}
+/* ***********************************    Def des Participants     *************************************** */ 
+
+abstract participant Professionnel identified by email {
+  o String libelle 
+  o String email
+  o String country optional 
+  o Double accountBalance
+}
+
+/* Def d'un brasseur ( extension d'un pro ) */
+
+participant Brasseur extends Professionnel {
+}
+
+/* Def d'un Expediteur ( extension d'un pro ) */
+
+participant Expediteur extends Professionnel {
+}
+
+/* Def d'un Importateur ( extension d'un pro ) */
+
+participant Importateur extends Professionnel {
+}
+
+
+/* ***********************************************   FIN   *********************************************** */
+
+/* **************************************    Def des Assets    ******************************************* */
+
+// cargaison associé à  un contrat 
+
+asset Cargaison identified by cargaisonId {
+  o String cargaisonId
+  o StatutCargaison statut
+  o Long unitCount
+  o LectureTemperature[] lectureTemperature optional
+}
+
+
+// Contract qui lit les 3 pariticipants
+asset Contrat identified by contratId {
+  o String contratId
+  o String etape // initial, intermediaire , finale 
+  --> Cargaison cargaison
+  --> Brasseur brasseur
+  --> Expediteur expediteur
+  --> Importateur importateur
+  o String depart 
+  o String arrive // en reflexion : pour controler les points de passage 
+  o DateTime arriverDateTime
+  o Double unitPrice
+  o Double minTemperature
+  o Double maxTemperature
+  o Double minPenaliteFacteur
+  o Double maxPenaliteFacteur
+}
+
+/* ***********************************************   FIN   *********************************************** */
+
+/* ***************************************   DEF DES TRANSCATIONS   ************************************** */
+
+/*  Le recu d'une cargaison est une transaction abstraite liée à une cargaison */
+abstract transaction CargaisonRecu {
+  --> Contrat contrat
+  o String id_credite  // celui qui est paye par l'acheteur 
+}
+
+/*Lecture de la temperature : extension du recu de la cargaison ( pas besoin sinon )*/
+
+transaction LectureTemperature extends CargaisonRecu {
+	o Double celsus 
+}
+
+/* Initialiser les participants  */
+transaction SetupParticipant {
+
+} 
+
+/* Initialiser une Demo  */
+transaction SetupDemo {
+
+} 
+
+/* ***********************************************   FIN   *********************************************** */
