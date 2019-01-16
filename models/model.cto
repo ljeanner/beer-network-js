@@ -83,7 +83,7 @@ asset Contract identified by contratId {
 /* ***************************************   DEF DES TRANSCATIONS   ************************************** */
 
 /*  Le recu d'une Shipment est une transaction abstraite liée à une Shipment */
-abstract transaction ShipmentRecu {
+transaction ShipmentRecu {
   --> Contract contract
   o String id_credite  // celui qui est paye par l'acheteur 
 }
