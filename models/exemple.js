@@ -51,13 +51,13 @@ async function payOut(shipmentReceived) {  // eslint-disable-line no-unused-vars
             // does the lowest temperature violate the contract?
             if (lowestReading.centigrade < contract.minTemperature) {
                 penalty += (contract.minTemperature - lowestReading.centigrade) * contract.minPenaltyFactor;
-                console.log('Min temp penalty: ' + penalty);
+                console.log('Minimal temperature penalty: ' + penalty);
             }
 
             // does the highest temperature violate the contract?
             if (highestReading.centigrade > contract.maxTemperature) {
                 penalty += (highestReading.centigrade - contract.maxTemperature) * contract.maxPenaltyFactor;
-                console.log('Max temp penalty: ' + penalty);
+                console.log('Maximal temperature penalty: ' + penalty);
             }
 
             // apply any penalities
@@ -70,15 +70,15 @@ async function payOut(shipmentReceived) {  // eslint-disable-line no-unused-vars
     }
 
     console.log('Payout: ' + payOut);
-    contract.grower.accountBalance += payOut;
+    contract.brewer.accountBalance += payOut;
     contract.importer.accountBalance -= payOut;
 
-    console.log('Grower: ' + contract.grower.$identifier + ' new balance: ' + contract.grower.accountBalance);
+    console.log('Brewer: ' + contract.brewer.$identifier + ' new balance: ' + contract.brewer.accountBalance);
     console.log('Importer: ' + contract.importer.$identifier + ' new balance: ' + contract.importer.accountBalance);
 
-    // update the grower's balance
-    const growerRegistry = await getParticipantRegistry('org.acme.shipping.perishable.Grower');
-    await growerRegistry.update(contract.grower);
+    // update the brewer's balance
+    const brewerRegistry = await getParticipantRegistry('org.acme.shipping.perishable.Brewer');
+    await brewerRegistry.update(contract.brewer);
 
     // update the importer's balance
     const importerRegistry = await getParticipantRegistry('org.acme.shipping.perishable.Importer');
@@ -121,12 +121,12 @@ async function setupDemo(setupDemo) {  // eslint-disable-line no-unused-vars
     const factory = getFactory();
     const NS = 'org.acme.shipping.perishable';
 
-    // create the grower
-    const grower = factory.newResource(NS, 'Grower', 'farmer@email.com');
-    const growerAddress = factory.newConcept(NS, 'Address');
-    growerAddress.country = 'USA';
-    grower.address = growerAddress;
-    grower.accountBalance = 0;
+    // create the brewer
+    const brewer = factory.newResource(NS, 'Brewer', 'farmer@email.com');
+    const brewerAddress = factory.newConcept(NS, 'Address');
+    brewerAddress.country = 'USA';
+    brewer.address = brewerAddress;
+    brewer.accountBalance = 0;
 
     // create the importer
     const importer = factory.newResource(NS, 'Importer', 'supermarket@email.com');
@@ -144,7 +144,7 @@ async function setupDemo(setupDemo) {  // eslint-disable-line no-unused-vars
 
     // create the contract
     const contract = factory.newResource(NS, 'Contract', 'CON_001');
-    contract.grower = factory.newRelationship(NS, 'Grower', 'farmer@email.com');
+    contract.brewer = factory.newRelationship(NS, 'Brewer', 'farmer@email.com');
     contract.importer = factory.newRelationship(NS, 'Importer', 'supermarket@email.com');
     contract.shipper = factory.newRelationship(NS, 'Shipper', 'shipper@email.com');
     const tomorrow = setupDemo.timestamp;
@@ -163,9 +163,9 @@ async function setupDemo(setupDemo) {  // eslint-disable-line no-unused-vars
     shipment.unitCount = 5000;
     shipment.contract = factory.newRelationship(NS, 'Contract', 'CON_001');
 
-    // add the growers
-    const growerRegistry = await getParticipantRegistry(NS + '.Grower');
-    await growerRegistry.addAll([grower]);
+    // add the brewers
+    const brewerRegistry = await getParticipantRegistry(NS + '.Brewer');
+    await brewerRegistry.addAll([brewer]);
 
     // add the importers
     const importerRegistry = await getParticipantRegistry(NS + '.Importer');
