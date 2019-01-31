@@ -1,12 +1,12 @@
 # beer-network-js
-Beer network runing on hyperledger composer framework  <br>
+Ce registre distribué tourne sur Hyperledger Fabric, en utilisant le framework Composer<br>
 
 <h2> Tester le code </h2> 
 <li> Aller sur : 
 https://composer-playground-unstable.mybluemix.net/ </li> 
 <li> Cliquer sur : "Deploy New Business Network" 
-<li> Pour deployer, utiliser l'archive BNA </li> 
-<li> Une foi le reseau deployer, aller dans l'onglet test pour ajouter des nouveaux participants, contrat ... </li> 
+<li> Pour déployer, utiliser l'archive BNA </li> 
+<li> Une fois le reseau deployé, il faut aller dans l'onglet test pour ajouter des nouveaux participants, contrats ... </li> 
 
 <h2>Scenario</h2>
 <p>Voici les différentes étapes pour le suivi de la bière : 
@@ -21,7 +21,7 @@ https://composer-playground-unstable.mybluemix.net/ </li>
 
 <h2>  Condition du contrat  </h2> 
 
-Notre réseau définit un contrat entre brasseurs, expéditeurs et importateurs pour le prix et le bon acheminement de bières, sur la base des relevés de température reçus pour les conteneurs d’expédition.
+Notre réseau définit un contrat entre brasseurs, expéditeurs et importateurs pour le prix et le bon acheminement des bières, sur la base des relevés de température reçus pour les conteneurs d’expédition.
 Le réseau définit un contrat entre brasseurs et importateurs. Le contrat stipule que: 
 -	Lors de la réception de l'envoi, l'importateur paie au producteur : 
  	Le prix unitaire * le nombre d'unités de l'envoi
