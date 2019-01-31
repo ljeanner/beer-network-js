@@ -8,6 +8,7 @@ https://composer-playground-unstable.mybluemix.net/ </li>
 <li> Pour déployer, utiliser l'archive BNA </li> 
 <li> Une fois le reseau deployé, il faut aller dans l'onglet test pour ajouter des nouveaux participants, contrats ... </li> 
 
+<li> Pour prendre en main Hyperledger Composer : https://jeanneret-lucile.gitbook.io/hyperledeger-fabric/ </li>
 <h2>Scenario</h2>
 <p>Voici les différentes étapes pour le suivi de la bière : 
 <ul>
