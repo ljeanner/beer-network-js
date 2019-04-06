@@ -1,4 +1,5 @@
 # beer-network-js
+test
 Ce registre distribué tourne sur Hyperledger Fabric, en utilisant le framework Composer<br>
 
 <h2> Tester le code </h2> 
