@@ -45,11 +45,11 @@ Transactions : LectureTemperature, ExpéditionRécu
 <h3> Deploy </h3>
 
 - Pour obtenir la dernière image Docker de Hyperledger Composer-Playgroud : 
-    <code>$ docker pull hyperledger/composer-playground</code>
+    <br><code>$ docker pull hyperledger/composer-playground</code>
 - Lancez la commande suivante pour créer un conteneur Docker depuis votre image :
-    <code>$ docker run -d -p 8080:8080 --name composer hyperledger/composer-playground:latest</code>
+    <br><code>$ docker run -d -p 8080:8080 --name composer hyperledger/composer-playground:latest</code>
 - Vérifier que votre conteneur est bien up & running : 
-    <code>$ docker ps</code>
+    <br><code>$ docker ps</code>
 - Pour accéder à l'interface Composer, voici l'URL : <code>localhost:8080</code>
 - Sur Composer ( en local ou en ligne ) : cliquer sur " Deploy a new business network"
 - Aller dans la partie 2 "MODEL NETWORK STARTER TEMPLATE" et importer le ficher bna 
