@@ -44,8 +44,14 @@ Transactions : LectureTemperature, ExpéditionRécu
 
 <h3> Deploy </h3>
 
-- Pour installer l'image docker : https://hub.docker.com/r/hyperledger/composer-playground
-- Sur composer ( en local ou en ligne ) : cliquer sur " Deploy a new business network"
+- Pour obtenir la dernière image Docker de Hyperledger Composer-Playgroud : 
+    <code>$ docker pull hyperledger/composer-playground</code>
+- Lancez la commande suivante pour créer un conteneur Docker depuis votre image :
+    <code>$ docker run -d -p 8080:8080 --name composer hyperledger/composer-playground:latest</code>
+- Vérifier que votre conteneur est bien up & running : 
+    <code>$ docker ps</code>
+- Pour accéder à l'interface Composer, voici l'URL : <code>localhost:8080</code>
+- Sur Composer ( en local ou en ligne ) : cliquer sur " Deploy a new business network"
 - Aller dans la partie 2 "MODEL NETWORK STARTER TEMPLATE" et importer le ficher bna 
 - Cliquer sur deploy 
 - Dans test envoyer la transaction : Setup Demo ( definit les assets de la demo) puis SetupParticipants ( definit les participants)
