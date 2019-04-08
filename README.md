@@ -40,3 +40,13 @@ Le réseau définit :
 Participants : Brasseur, Importateur, Expéditeur  
 Assets : Contrat, Expédition
 Transactions : LectureTemperature, ExpéditionRécu   
+
+
+<h3> Deploy </h3>
+
+- Pour installer l'image docker : https://hub.docker.com/r/hyperledger/composer-playground
+- Sur composer ( en local ou en ligne ) : cliquer sur " Deploy a new business network"
+- Aller dans la partie 2 "MODEL NETWORK STARTER TEMPLATE" et importer le ficher bna 
+- Cliquer sur deploy 
+- Dans test envoyer la transaction : Setup Demo ( definit les assets de la demo) puis SetupParticipants ( definit les participants)
+- Envoyer les temperatures avec la transaction LectureTemperature et ShipmentRecu pour changer le statut d'une cargaison  
