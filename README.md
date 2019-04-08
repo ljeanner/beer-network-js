@@ -44,7 +44,7 @@ Transactions : LectureTemperature, ExpéditionRécu
 
 <h3> Deploy </h3>
 
-- Pour obtenir la dernière image Docker de Hyperledger Composer-Playgroud : 
+- Pour obtenir la dernière image Docker de Hyperledger Composer-Playgroud depuis le DockerHub: 
     <br><code>$ docker pull hyperledger/composer-playground</code>
 - Lancez la commande suivante pour créer un conteneur Docker depuis votre image :
     <br><code>$ docker run -d -p 8080:8080 --name composer hyperledger/composer-playground:latest</code>
